@@ -321,11 +321,12 @@ try {
             String codigo = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/LabFM", "root", "Polo.2015");
-            PreparedStatement pst = cn.prepareStatement("update Peliculas set Codigo_P = ?, Nombre_P = ? , Autor_P= ? , Genero_P=? , Clasificacion_P= ? , Duracion_P= ?, Precio_P= ?, Existencia=?  where Codigo_P = " + codigo);
-          
+            PreparedStatement pst = cn.prepareStatement("update Peliculas set Codigo_P = ?, Nombre_P = ? , Autor_P= ? , Genero_P=? , Clasificacion_P= ? , Duracion_P= ?, Precio_P= ?, Existencia=? , Existencia= ? where Codigo_P = " + codigo);
+            String mensaje="";
             
 
             pst.setString(1, txtbuscado.getText().trim());
+           
             pst.setString(2, txtNombre_P.getText().trim());
             pst.setString(3, txtAutor_P.getText().trim());
             pst.setString(4, cbox_Genero.getSelectedItem().toString());
@@ -338,7 +339,6 @@ try {
             JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "NO SE PUDO MODIFICAR.", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         // TODO add your handling code here:
