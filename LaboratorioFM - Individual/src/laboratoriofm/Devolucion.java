@@ -148,11 +148,8 @@ public class Devolucion extends javax.swing.JInternalFrame {
             String fecha=lb_Venc.getText().trim();
             String fecha_A=date_Fecha.toString();
             
-            boolean res= fecha_A.before(fecha);
-            
-            
-            
-          
+            //boolean res= fecha_A.before(fecha);
+    
 
             } else {
                 JOptionPane.showMessageDialog(null, "Renta no registrada.");
