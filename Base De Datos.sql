@@ -31,7 +31,6 @@ Tipo_A varchar(1) default'P'
 
 create table Juegos(
 Codigo_V int primary key auto_increment,
-Codigo_A int not null,
 Nombre_V varchar(60) not null,
 Genero_V varchar(60) not null,
 Precio_V decimal(10,2) not null,
@@ -83,5 +82,5 @@ Codigo_E int not null,
 foreign key (Codigo_E) references
 Empleados(Codigo_E)
 )engine=Innodb;
-
+select * from peliculas;
 drop database LabFM;
