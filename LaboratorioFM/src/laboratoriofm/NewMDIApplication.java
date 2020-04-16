@@ -15,6 +15,7 @@ public class NewMDIApplication extends javax.swing.JFrame {
     private Mantenimiento_Empleados ventanaempleados;
     private Mantenimiento_Juegos ventanajuegos;
     private Mantenimiento_Peliculas ventanapeliculas;
+    private Devolucion ventanadev;
     
     private Rentas ventanarentas;
     /**
@@ -121,6 +122,11 @@ public class NewMDIApplication extends javax.swing.JFrame {
 
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("Devoluciones");
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
         btnOperaciones.add(copyMenuItem);
 
         menuBar.add(btnOperaciones);
@@ -191,6 +197,13 @@ public class NewMDIApplication extends javax.swing.JFrame {
         ventanarentas=new Rentas();
         jDesktopPane1.add(ventanarentas);
     }//GEN-LAST:event_cutMenuItemActionPerformed
+
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+      ventanadev=new Devolucion();
+      jDesktopPane1.add(ventanadev);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_copyMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
