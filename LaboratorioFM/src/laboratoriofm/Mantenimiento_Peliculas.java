@@ -248,6 +248,8 @@ public class Mantenimiento_Peliculas extends javax.swing.JInternalFrame {
             txtDuración_P.setText("");
             txtPrecio_P.setText("");
             txtExistencia_P.setText("");
+             cbox_Genero.setSelectedIndex(0);
+            cbox_Clas.setSelectedIndex(0);
         }catch (Exception e){
              JOptionPane.showMessageDialog(this, "¡REGITRO FALLIDO!", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -276,6 +278,8 @@ String buscar = txtbuscado.getText().trim();
             if(rs.next()){
                txtNombre_P.setText(rs.getString("Nombre_P"));
             txtAutor_P.setText(rs.getString("Autor_P"));
+            cbox_Genero.setSelectedItem(rs.getString("Genero_P"));
+            cbox_Clas.setSelectedItem(rs.getString("Clasificacion_P"));
             lbGenero.setText(rs.getString("Genero_P"));
             lbClas.setText(rs.getString("Clasificacion_P"));
             txtDuración_P.setText(rs.getString("Duracion_P"));
@@ -308,7 +312,20 @@ String buscar = txtbuscado.getText().trim();
             txtbuscado.setText("");
 
             JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(false);
 
+            txtNombre_P.setText("");
+            txtAutor_P.setText("");
+            txtDuración_P.setText("");
+            txtPrecio_P.setText("");
+            txtExistencia_P.setText("");
+            lbGenero.setText("");
+            lbClas.setText("");
+            txtbuscado.setText("");
+            cbox_Genero.setSelectedIndex(0);
+            cbox_Clas.setSelectedIndex(0);
+            
         }catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }   
@@ -321,21 +338,31 @@ try {
             String codigo = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/LabFM", "root", "Polo.2015");
-            PreparedStatement pst = cn.prepareStatement("update Peliculas set Codigo_P = ?, Nombre_P = ? , Autor_P= ? , Genero_P=? , Clasificacion_P= ? , Duracion_P= ?, Precio_P= ?, Existencia=?  where Codigo_P = " + codigo);
-          
-            
-
-            pst.setString(1, txtbuscado.getText().trim());
-            pst.setString(2, txtNombre_P.getText().trim());
-            pst.setString(3, txtAutor_P.getText().trim());
-            pst.setString(4, cbox_Genero.getSelectedItem().toString());
-            pst.setString(5, cbox_Clas.getSelectedItem().toString());
-            pst.setString(6, txtDuración_P.getText().trim());
-            pst.setString(7, txtPrecio_P.getText().trim());
-            pst.setString(8, txtExistencia_P.getText().trim());
+            PreparedStatement pst = cn.prepareStatement("update Peliculas set Nombre_P = ? , Autor_P= ? , Genero_P=? , Clasificacion_P= ? , Duracion_P= ?, Precio_P= ?, Existencia=?  where Codigo_P = " + codigo);
+      
+            pst.setString(1, txtNombre_P.getText().trim());
+            pst.setString(2, txtAutor_P.getText().trim());
+            pst.setString(3, cbox_Genero.getSelectedItem().toString());
+            pst.setString(4, cbox_Clas.getSelectedItem().toString());
+            pst.setString(5, txtDuración_P.getText().trim());
+            pst.setString(6, txtPrecio_P.getText().trim());
+            pst.setString(7, txtExistencia_P.getText().trim());
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            
+            btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(false);
+            
+              txtNombre_P.setText("");
+            txtAutor_P.setText("");
+            txtDuración_P.setText("");
+            txtPrecio_P.setText("");
+            txtExistencia_P.setText("");
+            lbGenero.setText("");
+            lbClas.setText("");
+             cbox_Genero.setSelectedIndex(0);
+            cbox_Clas.setSelectedIndex(0);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "NO SE PUDO MODIFICAR.", "Error", JOptionPane.ERROR_MESSAGE);
