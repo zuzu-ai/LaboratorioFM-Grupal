@@ -5,9 +5,9 @@
  */
 package laboratoriofm;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,10 +77,25 @@ public class Mantenimiento_Clientes extends javax.swing.JInternalFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         label_status.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
@@ -170,7 +185,7 @@ public class Mantenimiento_Clientes extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
          try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/LabFM", "root", "6182");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into clientes values(?,?,?,?,?,?,?,?,?)");
             
@@ -197,6 +212,73 @@ public class Mantenimiento_Clientes extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        try {
+            String ID = txtbuscado.getText().trim();
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("update clientes set Nombre_C = ?, Dpi_C = ?, Tel_C = ?, Direccion_C = ?, Correo_C = ? where Tarjeta_C =" + ID);
+            
+            pst.setString(1, txtNombre_C.getText().trim());
+            pst.setString(2, txtDPI_C.getText().trim());
+            pst.setString(3, txtTelefono_C.getText().trim());
+            pst.setString(4, txtDireccion_C.getText().trim());
+            pst.setString(5, txtCorreo_C.getText().trim());
+            
+            pst.executeUpdate();
+            
+            label_status.setText("Modificación exitosa.");
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+         try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select * from clientes where Tarjeta_C = ?");
+            pst.setString(1, txtbuscado.getText().trim());
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtNombre_C.setText(rs.getString("Nombre_C"));
+                txtDPI_C.setText(rs.getString("Dpi_C"));
+                txtTelefono_C.setText(rs.getString("Tel_C"));
+                txtDireccion_C.setText(rs.getString("Direccion_C"));
+                txtCorreo_C.setText(rs.getString("Correo_C"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente no registrado.");
+            }
+            
+        }catch (Exception e){
+            
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+         try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("delete from clientes where Tarjeta_C = ?");
+            
+            pst.setString(1, txtbuscado.getText().trim());
+            pst.executeUpdate();
+            
+            txtNombre_C.setText("");
+            txtDPI_C.setText("");
+            txtTelefono_C.setText("");
+            txtDireccion_C.setText("");
+            txtCorreo_C.setText("");
+            
+            label_status.setText("Cliente eliminado.");
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
