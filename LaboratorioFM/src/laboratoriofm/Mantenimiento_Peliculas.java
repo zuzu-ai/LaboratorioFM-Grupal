@@ -5,6 +5,7 @@
  */
 package laboratoriofm;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,37 +29,328 @@ public class Mantenimiento_Peliculas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label_status = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtbuscado = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cbox_Genero = new javax.swing.JComboBox<>();
+        txtDuración_P = new javax.swing.JTextField();
+        cbox_Clas = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        lbGenero = new javax.swing.JLabel();
+        txtPrecio_P = new javax.swing.JTextField();
+        lbClas = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtExistencia_P = new javax.swing.JTextField();
+        txtNombre_P = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        txtAutor_P = new javax.swing.JTextField();
+        btnModificar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Peliculas");
         setVisible(true);
 
-        label_status.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Género");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Clasificación");
+
+        jLabel7.setText("Duración");
+
+        cbox_Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Terror", "Comedia", "Romantica", "Suspenso", "Familiar", "Anime", "Accion", "Ciencia Ficcion", "Aventura" }));
+
+        cbox_Clas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Seleccione...", "“AA", " “A”", " “B”", " “B15”", " “C”", " “D”" }));
+
+        jLabel8.setText("Precio");
+
+        lbGenero.setText("...");
+
+        lbClas.setText("...");
+
+        jLabel9.setText("Existencia");
+
+        jLabel3.setText("Nombre");
+
+        txtExistencia_P.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtExistencia_PActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Autor");
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPrecio_P)
+                            .addComponent(txtDuración_P)
+                            .addComponent(txtAutor_P)
+                            .addComponent(txtNombre_P)
+                            .addComponent(cbox_Genero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbox_Clas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtExistencia_P, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbGenero)
+                    .addComponent(lbClas))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(label_status, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                .addGap(124, 124, 124))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNombre_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtAutor_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cbox_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbGenero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cbox_Clas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbClas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtDuración_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtPrecio_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtExistencia_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnModificar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
+                    .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String buscar = txtbuscado.getText().trim();
+        if(buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("select * from peliculas where Codigo_P = ?");
+            pst.setString(1, txtbuscado.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                txtNombre_P.setText(rs.getString("Nombre_P"));
+                txtAutor_P.setText(rs.getString("Autor_P"));
+                lbGenero.setText(rs.getString("Genero_P"));
+                lbClas.setText(rs.getString("Clasificacion_P"));
+                txtDuración_P.setText(rs.getString("Duracion_P"));
+                txtPrecio_P.setText(rs.getString("Precio_P"));
+                txtExistencia_P.setText(rs.getString("Existencia"));
+
+                btnEliminar.setEnabled(true);
+                btnModificar.setEnabled(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Pelicula no registrada.");
+            }
+
+        }catch (Exception e){
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtExistencia_PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExistencia_PActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtExistencia_PActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+          try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("insert into peliculas values(?,?,?,?,?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, txtNombre_P.getText().trim());
+            pst.setString(3, txtAutor_P.getText().trim());
+            pst.setString(4, cbox_Genero.getSelectedItem().toString());
+            pst.setString(5, cbox_Clas.getSelectedItem().toString());
+            pst.setString(6, txtDuración_P.getText().trim());
+            pst.setString(7, txtPrecio_P.getText().trim());
+            pst.setString(8, txtExistencia_P.getText().trim());
+            pst.setString(9, "P");
+            pst.executeUpdate();
+
+           
+
+            JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+           
+            txtNombre_P.setText("");
+            txtAutor_P.setText("");
+            txtDuración_P.setText("");
+            txtPrecio_P.setText("");
+            txtExistencia_P.setText("");
+        }catch (Exception e){
+             JOptionPane.showMessageDialog(this, "¡REGITRO FALLIDO!", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("delete from peliculas where Codigo_P = ?");
+
+            pst.setString(1, txtbuscado.getText().trim());
+            pst.executeUpdate();
+
+            txtbuscado.setText("");
+
+            JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try {
+            String codigo = txtbuscado.getText().trim();
+
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labfm", "root", "6182");
+            PreparedStatement pst = cn.prepareStatement("update peliculas set Codigo_P = ?, Nombre_P = ? , Autor_P= ? , Genero_P=? , Clasificacion_P= ? , Duracion_P= ?, Precio_P= ?, Existencia=? , Existencia= ? where Codigo_P = " + codigo);
+            String mensaje="";
+
+            pst.setString(1, txtbuscado.getText().trim());
+
+            pst.setString(2, txtNombre_P.getText().trim());
+            pst.setString(3, txtAutor_P.getText().trim());
+            pst.setString(4, cbox_Genero.getSelectedItem().toString());
+            pst.setString(5, cbox_Clas.getSelectedItem().toString());
+            pst.setString(6, txtDuración_P.getText().trim());
+            pst.setString(7, txtPrecio_P.getText().trim());
+            pst.setString(8, txtExistencia_P.getText().trim());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel label_status;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox<String> cbox_Clas;
+    private javax.swing.JComboBox<String> cbox_Genero;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbClas;
+    private javax.swing.JLabel lbGenero;
+    private javax.swing.JTextField txtAutor_P;
+    private javax.swing.JTextField txtDuración_P;
+    private javax.swing.JTextField txtExistencia_P;
+    private javax.swing.JTextField txtNombre_P;
+    private javax.swing.JTextField txtPrecio_P;
+    private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }

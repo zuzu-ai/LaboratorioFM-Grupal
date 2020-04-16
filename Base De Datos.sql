@@ -19,18 +19,14 @@ Codigo_A int primary key auto_increment
 
 create table Peliculas(
 Codigo_P int primary key auto_increment,
-Codigo_A int not null,
 Nombre_P varchar(60) not null,
 Autor_P varchar(60) not null,
 Genero_P varchar(60) not null,
 Clasificacion_P varchar(60) not null,
-Duracion_P time not null,
+Duracion_P int not null,
 Precio_P decimal(10,2) not null,
 Existencia int not null,
-Tipo_A varchar(1) default'P',
-
-foreign key (Codigo_A) references
-Articulos(Codigo_A)
+Tipo_A varchar(1) default'P'
 )engine=Innodb;
 
 create table Juegos(
