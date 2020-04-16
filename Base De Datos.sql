@@ -83,5 +83,3 @@ Codigo_E int not null,
 foreign key (Codigo_E) references
 Empleados(Codigo_E)
 )engine=Innodb;
-
-drop database LabFM;
